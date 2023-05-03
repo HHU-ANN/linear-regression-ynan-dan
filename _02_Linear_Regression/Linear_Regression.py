@@ -9,7 +9,7 @@ except ImportError as e:
     import numpy as np
 
 
-def ridge(data):
+'''def ridge(data):
     x, y = read_data()
     i = np.eye(6)
     alpha = 0.1
@@ -18,8 +18,33 @@ def ridge(data):
     return data @ weight
     pass
 
+def lasso(data):
+    pass'''
+
+
+def ridge(data):
+    x, y = read_data()
+    lambd = -0.1
+    weight = np.matmul(np.linala.inv(np.(np.matmul(x.T, x) + np.matmul(lambd, np.eye(6)))), np.matmul(x.T, y))
+    return weight @ data
+    pass
+
 
 def lasso(data):
+    label = 2e-5
+    x, Y = read_data()
+    weight = np.ones([6, 6])
+    y = np.dot(weight, x)
+    loss = (np.sum(y - Y) ** 2) / 6
+    rate = 1e-10
+    for i in range(int(1e9)):
+        y = np.dot(weight, x)
+        loss = (np.sum(y - Y) ** 2) / 6
+        if loss < label:
+            break
+        dw = np.dot((y - Y), x.T)
+        weight = weight - dw * rate
+    return weight @ data
     pass
 
 
