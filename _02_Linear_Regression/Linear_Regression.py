@@ -8,18 +8,25 @@ except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
 
+
 def ridge(data):
     x, y = read_data()
     i = np.eye(6)
-    alpha = 1
+    alpha = 100
     weight = np.dot(np.linalg.inv(np.dot(x.T, x) + np.dot(alpha, i)), np.dot(x.T, y))
+    print(np.dot(alpha, i))
     return data @ weight
     pass
-    
+
+
 def lasso(data):
     pass
+
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
     y = np.load(path + 'y_train.npy')
     return x, y
+
+
+
