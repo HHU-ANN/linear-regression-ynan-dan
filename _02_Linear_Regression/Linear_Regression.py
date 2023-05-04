@@ -29,7 +29,7 @@ def lasso(data):
         loss = np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
         if loss < label:
             break
-        dw = np.dot(x, z - y) + np.sign(weight)
+        dw = np.dot(z-y, x) + np.sign(weight)
         weight = weight - r * dw
     return data @ weight
 
