@@ -21,10 +21,10 @@ def ridge(data):
 def lasso(data):
     x, y = read_data()
     weight = np.array([0, 0, 0, 0, 0, 0])
-    label = 1e-5
-    r = 1e-11
-    alpha = 1
-    for i in range(int(1e6)):
+    label = 1e-6
+    r = 1e-10
+    alpha = 0.0001
+    for i in range(int(5e6)):
         z = np.dot(x, weight)
         loss = np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
         if loss < label:
