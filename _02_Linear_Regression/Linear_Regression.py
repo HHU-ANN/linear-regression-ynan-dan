@@ -24,7 +24,7 @@ def lasso(data):
     label = 1e-6
     r = 1e-10
     alpha = 0.0001
-    for i in range(int(5e6)):
+    for i in range(int(1e6)):
         z = np.dot(x, weight)
         loss = np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
         if loss < label:
