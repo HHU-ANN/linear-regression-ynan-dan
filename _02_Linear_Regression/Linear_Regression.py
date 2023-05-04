@@ -22,8 +22,8 @@ def lasso(data):
     x, y = read_data()
     weight = np.array([0, 0, 0, 0, 0, 0])
     r = 1e-10
-    alpha = 0.5
-    for i in range(int(5e5)):
+    alpha = 10
+    for i in range(int(150000)):
         z = np.dot(x, weight)
         dw = 2 * np.dot(z-y, x) + alpha*np.sign(weight)
         weight = weight - r * dw
