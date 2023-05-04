@@ -23,12 +23,13 @@ def lasso(data):
     weight = np.array([0, 0, 0, 0, 0, 0])
     label = 1e-5
     r = 1e-11
+    alpha = 1
     for i in range(int(1e6)):
         z = np.dot(x, weight)
-        loss = np.dot((z - y).T, z - y)
+        loss = np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
         if loss < label:
             break
-        dw = 2 * np.dot(z-y, x)
+        dw = 2 * np.dot(z-y, x) + alpha*np.sign(weight)
         weight = weight - r * dw
     return data @ weight
 
