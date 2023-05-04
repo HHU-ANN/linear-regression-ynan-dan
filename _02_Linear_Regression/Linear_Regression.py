@@ -21,7 +21,7 @@ def ridge(data):
 def lasso(data):
     x, y = read_data()
     weight = np.array([0, 0, 0, 0, 0, 0])
-    r = 1e-12
+    r = 1e-9
     alpha = 0.5
     losspast = 0
     for i in range(int(1e6)):
