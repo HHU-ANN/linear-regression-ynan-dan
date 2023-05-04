@@ -22,9 +22,9 @@ def lasso(data):
     x, y = read_data()
     weight = np.array([0, 0, 0, 0, 0, 0])
     label = 2e-5
-    alpha = 0.1
+    alpha = 1.5
     r = 1e-12
-    for i in range(int(2e6)):
+    for i in range(int(1e6)):
         z = np.dot(x, weight)
         loss = 2 * np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
         if loss < label:
