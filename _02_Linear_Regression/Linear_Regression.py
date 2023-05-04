@@ -19,7 +19,19 @@ def ridge(data):
     pass
 
 def lasso(data):
-    pass
+    x, y = read_data()
+    weight = np.zeros(1, 6)
+    label = 2e-5
+    alpha = 0.01
+    r = 1e-12
+    for i in range(int(2e6)):
+        z = np.dot(weight, x)
+        loss = np.dot((z - y).T, z - y) + alpha * np.sum(abs(weight))
+        if loss < label:
+            break
+        dw = np.dot(x, z - y) + np.sign(weight)
+        weight = weight - r * dw
+    return data @ weight
 
 
 def read_data(path='./data/exp02/'):
