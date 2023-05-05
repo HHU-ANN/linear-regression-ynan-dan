@@ -20,7 +20,7 @@ def ridge(data):
 
 def lasso(data):
     x, y = read_data()
-    weight = np.array([0, 0, 0, 0, 0, 0])
+    weight = data
     label = 1e-9
     alpha = 0.6
     r = 4e-10
